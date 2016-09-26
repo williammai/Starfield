@@ -1,26 +1,49 @@
-//your code here
+NormalParticle weirdo = new NormalParticle();
 void setup()
 {
-	//your code here
+	size(800,800);
 }
 void draw()
 {
-	//your code here
+	weirdo.move();
+	weirdo.show();
 }
 class NormalParticle
 {
-	//your code here
+	double myX, myY, mySpeed,myAngle;
+	int myColor;
+	NormalParticle()
+	{
+
+	}
+	void move()
+	{
+
+	}
+	void show()
+	{
+
+	}
 }
 interface Particle
 {
-	//your code here
+	Particle()
+	{
+
+	}
 }
 class OddballParticle //uses an interface
 {
-	//your code here
+	OddballParticle()
+	{
+
+	}
 }
 class JumboParticle //uses inheritance
 {
-	//your code here
+	JumboParticle()
+	{
+
+	}
 }
 
