@@ -1,19 +1,16 @@
 NormalParticle [] apt;
-OddballParticle [] tit;
+OddballParticle tit = new OddballParticle(400,400);
 
 
 void setup()
 {
 	size(800,800);
 	
-	apt = new NormalParticle[100];
- 	for (int i=0;i<100;i++){
+	apt = new NormalParticle[150];
+ 	for (int i=0;i<150;i++){
  		apt[i]=new NormalParticle(400,400); 
  	}
- 	tit = new OddballParticle[100];
- 	for (int i=0;i<100;i++){
- 		tit[i]=new OddballParticle(400,400); 
- 	}
+ 
 }
 void draw()
 {
@@ -22,10 +19,10 @@ void draw()
  		apt[i].move();
  		apt[i].show();
  	}
- 	for(int i=0;i<tit.length;i++){
- 		tit[i].move();
- 		tit[i].show();
- 	}
+ 	tit.move();
+ 	tit.show();
+
+ 
 
 }
 class NormalParticle
@@ -45,6 +42,7 @@ class NormalParticle
 	{
 		myX += Math.cos(myAngle)*(mySpeed);
 		myY += Math.sin(myAngle)*(mySpeed);
+		myAngle = myAngle + 0.01;
 			
 	}
 	void show()
@@ -76,19 +74,20 @@ class OddballParticle //uses an interface
 	void move()
 	{
 		myX += Math.cos(myAngle)*(mySpeed);
-		myY += Math.sin(myAngle)*(mySpeed);
+		myY += Math.cos(myAngle)*(mySpeed);
+		myAngle = myAngle + 0.01;
 	}
 	void show()
 	{
 		fill(0,255,0);
-		ellipse(myX,myY,15,15);
+		rect(myX,myY,30,30);
 	}
 }
-class JumboParticle //uses inheritance
+class JumboParticle  //uses inheritance
 {
 	JumboParticle()
 	{
-
+	
 	}
 }
 
