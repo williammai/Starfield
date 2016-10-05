@@ -1,31 +1,41 @@
 NormalParticle [] apt;
-OddballParticle tit = new OddballParticle(400,400);
-
+//OddballParticle tit = new OddballParticle(400,400);
+ Particle[] colony;
 
 void setup()
 {
 	size(800,800);
 	
-	apt = new NormalParticle[150];
+	/*apt = new NormalParticle[150];
  	for (int i=0;i<150;i++){
  		apt[i]=new NormalParticle(400,400); 
  	}
+ 	apt[0] = new OddballParticle();*/
+
+ 	colony = new Particle[200];
+ 	for(int i =0; i<colony.length;i++){
+ 		colony[i] = new NormalParticle(400,400);
+ 	}
+ 	{
+ 		colony[0] = new OddballParticle(400,400);
+ 	}
+
  
 }
 void draw()
 {
 	background(0);
-	for(int i=0;i<apt.length;i++){
- 		apt[i].move();
- 		apt[i].show();
+	for(int i=0;i<colony.length;i++){
+ 		colony[i].move();
+ 		colony[i].show();
  	}
- 	tit.move();
- 	tit.show();
+ 	//tit.move();
+ 	//tit.show();
 
  
 
 }
-class NormalParticle
+class NormalParticle implements Particle
 {
 	float myX, myY, mySpeed,myAngle;
 	int myColor;
@@ -51,15 +61,14 @@ class NormalParticle
 		ellipse(myX,myY,15,15);
 	}
 }
-//interface Particle
+interface Particle
 {
-	//Particle()
-	{
-	//	public void move();
-	//	public void show();
-	}
+	
+		public void move();
+		public void show();
+	
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle //uses an interface
 {
 	float myX, myY, mySpeed,myAngle;
 	int myColor;
@@ -80,7 +89,10 @@ class OddballParticle //uses an interface
 	void show()
 	{
 		fill(0,255,0);
-		rect(myX,myY,30,30);
+		rect(myX,myY,40,40);
+		fill(0);
+		ellipse(myX-10, myY-10, 5, 5);
+		ellipse(myX+10, myY+10,5,5);
 	}
 }
 class JumboParticle  //uses inheritance
