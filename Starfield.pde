@@ -14,10 +14,13 @@ void setup()
 
  	colony = new Particle[200];
  	for(int i =0; i<colony.length;i++){
- 		colony[i] = new NormalParticle(400,400);
+ 		colony[i] = new NormalParticle();
  	}
  	{
  		colony[0] = new OddballParticle(400,400);
+ 	}
+ 	{
+ 		colony[1] = new JumboParticle();
  	}
 
  
@@ -39,10 +42,10 @@ class NormalParticle implements Particle
 {
 	float myX, myY, mySpeed,myAngle;
 	int myColor;
-	NormalParticle(int x, int y)
+	NormalParticle()
 	{
-		myX = x;
-		myY = y;
+		myX = 400;
+		myY = 400;
 		myAngle = (float)(Math.random()*(2*Math.PI));
 		mySpeed = (float)(Math.random()*7)-3;
 		myColor = 15;
@@ -95,11 +98,11 @@ class OddballParticle implements Particle //uses an interface
 		ellipse(myX+10, myY+10,5,5);
 	}
 }
-class JumboParticle  //uses inheritance
+class JumboParticle extends NormalParticle  
 {
-	JumboParticle()
-	{
-	
+	void show(){
+		fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+		ellipse(myX,myY,80,80);
 	}
 }
 
